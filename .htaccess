@@ -1,0 +1,34 @@
+Options +FollowSymLinks
+IndexIgnore */*
+RewriteEngine on
+
+RewriteCond %{REQUEST_URI} !^/
+
+# Если запрос не начинается с web, добавляем его
+RewriteCond %{REQUEST_URI} !^/
+RewriteRule (.*) /$1
+
+# Если файл или каталог не существует, идём к /web/index.php
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule . /index.php
+
+#Options -Indexes
+#
+#<IfModule mod_rewrite.c>
+#  RewriteEngine on
+#
+#  RewriteCond %{REQUEST_URI} !^public
+#  RewriteRule ^(.*)$ web/$1 [L]
+#</IfModule>
+#
+## Deny accessing below extensions
+#<Files ~ "(.json|.lock|.git)">
+#Order allow,deny
+#Deny from all
+#</Files>
+#
+## Deny accessing dot files
+#RewriteRule (^\.|/\.) - [F]
+
+
