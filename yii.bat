@@ -1,3 +1,6 @@
+rem set php=d:\OpenServer\modules\php\PHP-7\
+rem set PATH=%PATH%;%php%
+
 @echo off
 
 rem -------------------------------------------------------------
